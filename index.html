@@ -12,7 +12,6 @@
             color: #1f2937;
         }
         
-        /* Drag and Drop Styles */
         .drop-slot {
             transition: all 0.2s ease;
         }
@@ -31,7 +30,6 @@
             transform: scale(0.95);
         }
 
-        /* Hide phases by default */
         .phase-container {
             display: none;
         }
@@ -39,7 +37,6 @@
             display: flex;
         }
 
-        /* Loader for images */
         .img-loading {
             background: #f3f4f6 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-2 animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>') center no-repeat;
         }
@@ -47,10 +44,8 @@
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <!-- Main App Container -->
     <main id="app" class="w-full max-w-4xl bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden relative min-h-[600px] flex flex-col">
         
-        <!-- Header / Progress -->
         <header class="bg-gray-50 border-b border-gray-200 p-4 flex justify-between items-center">
             <h1 class="text-xl font-semibold text-gray-800">Cognition & Memory Test</h1>
             <div id="trial-counter" class="text-sm font-medium text-gray-500 hidden">
@@ -60,7 +55,7 @@
 
         <section id="phase-0" class="phase-container active flex-col items-center justify-center flex-grow p-8 text-center space-y-6">
             <div class="max-w-2xl space-y-4">
-                <h2 class="text-3xl font-bold text-gray-900">Welcome</h2>
+                <h2 class="text-3xl font-bold text-gray-900">Willkommen zum Gedächtnistest</h2>
                 <p class="text-gray-600 leading-relaxed text-lg">
                     Dieser Test besteht aus mehreren Durchläufen mit jeweils drei Phasen:
                 </p>
@@ -119,7 +114,6 @@
                 </div>
 
                 <div id="math-feedback" class="h-12 flex items-center justify-center text-lg font-semibold rounded-lg opacity-0 transition-opacity duration-300">
-                    <!-- Feedback injected here -->
                 </div>
             </div>
         </section>
@@ -131,20 +125,16 @@
             </div>
 
             <div class="flex flex-col md:flex-row flex-grow gap-8 w-full max-w-5xl mx-auto items-stretch">
-                <!-- Left Side: Image Pool -->
                 <div class="flex-1 bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-inner flex flex-col">
                     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4 text-center">Verfügbare Bilder</h3>
                     <div id="image-pool" class="flex-grow grid grid-cols-2 gap-4 place-items-center min-h-[300px]" 
                          ondrop="app.drop(event)" ondragover="app.allowDrop(event)">
-                        <!-- Images injected here -->
                     </div>
                 </div>
 
-                <!-- Right Side: Slots -->
                 <div class="flex-1 space-y-4 flex flex-col justify-center">
                     <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2 text-center">Ihre Sortierung</h3>
                     
-                    <!-- Slots 1 to 4 -->
                     <div class="flex items-center space-x-4">
                         <div class="w-8 text-xl font-bold text-gray-400 text-right">1.</div>
                         <div class="drop-slot flex-grow h-28 border-2 border-dashed border-gray-300 rounded-xl bg-white flex items-center justify-center overflow-hidden" 
@@ -183,7 +173,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Math Stats -->
                     <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
                         <h3 class="font-bold text-blue-800 mb-4 text-lg">Kopfrechnen (Ablenkung)</h3>
                         <div class="flex justify-between items-end">
@@ -198,7 +187,6 @@
                         </div>
                     </div>
 
-                    <!-- Speed Stats -->
                     <div class="bg-green-50 p-6 rounded-xl border border-green-100">
                         <h3 class="font-bold text-green-800 mb-4 text-lg">Sortier-Geschwindigkeit</h3>
                         <div class="flex justify-between items-end">
@@ -210,7 +198,6 @@
                     </div>
                 </div>
 
-                <!-- Trial Details (Collapsible or just a list) -->
                 <div class="mt-6">
                     <h3 class="font-bold text-gray-800 mb-3 text-lg">Details der Durchläufe</h3>
                     <div class="overflow-x-auto">
@@ -223,13 +210,11 @@
                                 </tr>
                             </thead>
                             <tbody id="res-trial-table" class="bg-white divide-y divide-gray-200">
-                                <!-- Injected via JS -->
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Actions -->
                 <div class="pt-6 border-t border-gray-100 flex flex-wrap justify-center gap-4">
                     <button onclick="app.downloadData('csv')" class="flex items-center space-x-2 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-sm transition">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
@@ -241,7 +226,7 @@
                     </button>
                     <button onclick="app.sendWebhook()" class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-sm transition">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                        <span>Daten Senden</span>
+                        <span>Daten Erneut Senden</span>
                     </button>
                 </div>
                 <div id="webhook-status" class="text-center text-sm font-medium mt-2 hidden"></div>
@@ -251,9 +236,9 @@
 
     <script>
         const AppConfig = {
-            NUM_TRIALS: 3, // Configurable number of loops
-            PHASE_1_DURATION: 10, // seconds
-            PHASE_2_DURATION: 25, // seconds
+            NUM_TRIALS: 3,
+            PHASE_1_DURATION: 10,
+            PHASE_2_DURATION: 25,
             WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbzEE-Rx1GkqAjsBaLB7msPWkgUBsjRHSy6czo55UyJ-EASY6j0KplSRT0CErwG_jI1t/exec',
         };
 
@@ -264,7 +249,6 @@
             phase3StartTime: null,
             draggedItem: null,
             
-            // Data store
             results: {
                 participantId: 'PARTICIPANT_' + Math.random().toString(36).substring(2, 9).toUpperCase(),
                 timestamp: new Date().toISOString(),
@@ -272,7 +256,6 @@
                 trials: []
             },
 
-            // Helper to generate image URLs (using picsum with seeds for consistency within a session)
             generateImagesForTrial: function(trialNum) {
                 const baseSeed = `app_mem_${this.results.participantId}_T${trialNum}`;
                 return {
@@ -286,7 +269,6 @@
                 };
             },
 
-            // Navigation
             showPhase: function(phaseNum) {
                 document.querySelectorAll('.phase-container').forEach(el => el.classList.remove('active'));
                 document.getElementById(`phase-${phaseNum}`).classList.add('active');
@@ -303,7 +285,6 @@
                 this.showPhase(1);
                 document.getElementById('current-trial-display').innerText = this.currentTrial;
                 
-                // Initialize current trial data
                 this.results.trials[this.currentTrial - 1] = {
                     trialNumber: this.currentTrial,
                     targetImageObj: this.generateImagesForTrial(this.currentTrial),
@@ -315,15 +296,17 @@
                 const trialData = this.results.trials[this.currentTrial - 1];
                 const imgEl = document.getElementById('p1-image');
                 imgEl.src = trialData.targetImageObj.target;
-                imgEl.classList.add('hidden'); // hidden until loaded
+                imgEl.classList.add('hidden');
 
                 let timeLeft = AppConfig.PHASE_1_DURATION;
                 const timerEl = document.getElementById('p1-timer');
                 const ringEl = document.getElementById('p1-timer-ring');
-                const circumference = 2 * Math.PI * 46; // r=46 from SVG
+                const circumference = 2 * Math.PI * 46;
 
                 timerEl.innerText = timeLeft;
                 ringEl.style.strokeDashoffset = 0;
+
+                if (this.timerInterval) clearInterval(this.timerInterval);
 
                 this.timerInterval = setInterval(() => {
                     timeLeft--;
@@ -345,7 +328,7 @@
                 let num1, num2, answer;
 
                 if (op === '*') {
-                    num1 = Math.floor(Math.random() * 12) + 2; // 2 to 13
+                    num1 = Math.floor(Math.random() * 12) + 2;
                     num2 = Math.floor(Math.random() * 12) + 2;
                     answer = num1 * num2;
                 } else if (op === '+') {
@@ -358,7 +341,6 @@
                     answer = num1 - num2;
                 }
                 
-                // Occasionally add a third term for complexity
                 if (Math.random() > 0.6) {
                     const op2 = ['+', '-'][Math.floor(Math.random() * 2)];
                     const num3 = Math.floor(Math.random() * 20) + 1;
@@ -382,6 +364,8 @@
                 document.getElementById('math-feedback').style.opacity = '0';
                 
                 this.generateMathProblem();
+
+                if (this.timerInterval) clearInterval(this.timerInterval);
 
                 this.timerInterval = setInterval(() => {
                     timeLeft--;
@@ -429,10 +413,8 @@
                 const pool = document.getElementById('image-pool');
                 pool.innerHTML = '';
                 
-                // Clear slots
                 document.querySelectorAll('.drop-slot').forEach(slot => slot.innerHTML = '');
                 
-                // Prepare images
                 const imagesToRender = [
                     { id: trialData.targetImageObj.targetId, src: trialData.targetImageObj.target, isTarget: true },
                     { id: `img_dist1_t${this.currentTrial}`, src: trialData.targetImageObj.distractors[0], isTarget: false },
@@ -440,10 +422,9 @@
                     { id: `img_dist3_t${this.currentTrial}`, src: trialData.targetImageObj.distractors[2], isTarget: false }
                 ];
                 
-                // Shuffle array
                 imagesToRender.sort(() => Math.random() - 0.5);
 
-                imagesToRender.forEach((imgData, index) => {
+                imagesToRender.forEach((imgData) => {
                     const img = document.createElement('img');
                     img.src = imgData.src;
                     img.id = imgData.id;
@@ -458,10 +439,8 @@
                 this.checkPhase3DoneState();
             },
 
-            // HTML5 Drag and Drop Handlers
             allowDrop: function(ev) {
                 ev.preventDefault();
-                // Visual feedback
                 if(ev.target.classList.contains('drop-slot')) {
                     ev.target.classList.add('drag-over');
                 }
@@ -483,26 +462,21 @@
 
                 let dropZone = ev.target;
 
-                // Handle dropping onto a slot
                 if (dropZone.classList.contains('drop-slot')) {
                     if (dropZone.children.length > 0) {
-                        // Slot occupied, move existing image back to pool
                         document.getElementById('image-pool').appendChild(dropZone.children[0]);
                     }
                     dropZone.appendChild(draggedElement);
                 } 
-                // Handle dropping onto an image already in a slot (swap/replace)
                 else if (dropZone.tagName === 'IMG' && dropZone.parentElement.classList.contains('drop-slot')) {
                     const slot = dropZone.parentElement;
                     document.getElementById('image-pool').appendChild(dropZone);
                     slot.appendChild(draggedElement);
                 }
-                // Handle dropping back into the pool
                 else if (dropZone.id === 'image-pool' || dropZone.closest('#image-pool')) {
                     document.getElementById('image-pool').appendChild(draggedElement);
                 }
 
-                // Adjust styles based on container
                 if(draggedElement.parentElement.classList.contains('drop-slot')) {
                     draggedElement.classList.remove('max-h-[140px]', 'max-w-[140px]');
                     draggedElement.classList.add('h-full', 'w-full', 'object-contain', 'm-0', 'border-0');
@@ -515,7 +489,6 @@
             },
 
             checkPhase3DoneState: function() {
-                // Ensure all 4 slots have an image before allowing 'Done'
                 const slots = document.querySelectorAll('.drop-slot');
                 let allFilled = true;
                 slots.forEach(slot => {
@@ -533,7 +506,6 @@
                 const trialData = this.results.trials[this.currentTrial - 1];
                 trialData.reactionTimeMs = reactionTime;
                 
-                // Collect ordering
                 const slots = [
                     document.querySelector('[data-slot="1"]').firstElementChild,
                     document.querySelector('[data-slot="2"]').firstElementChild,
@@ -545,16 +517,14 @@
                     if (img) {
                         trialData.sortedIds.push(img.id);
                         if (img.dataset.isTarget === "true") {
-                            trialData.targetPositionPlaced = index + 1; // 1-indexed
+                            trialData.targetPositionPlaced = index + 1;
                         }
                     }
                 });
 
-                // Clear listeners attached to images to prevent memory leaks if recreated
                 document.getElementById('image-pool').innerHTML = '';
                 document.querySelectorAll('.drop-slot').forEach(s => s.innerHTML = '');
 
-                // Loop or End
                 if (this.currentTrial < AppConfig.NUM_TRIALS) {
                     this.currentTrial++;
                     this.runPhase1();
@@ -567,7 +537,6 @@
             runPhase4: function() {
                 this.showPhase(4);
                 
-                // Populate Stats
                 const mathTot = this.results.mathStats.total;
                 const mathCor = this.results.mathStats.correct;
                 const mathAcc = mathTot > 0 ? Math.round((mathCor / mathTot) * 100) : 0;
@@ -585,7 +554,6 @@
                     
                     const tr = document.createElement('tr');
                     
-                    // Format position text
                     let posText = `Position ${trial.targetPositionPlaced}`;
                     if (trial.targetPositionPlaced === 1) posText += ` <span class="text-green-500 font-bold">(Korrekt)</span>`;
                     else posText += ` <span class="text-red-500 font-bold">(Falsch)</span>`;
@@ -601,7 +569,7 @@
                 const avgTime = this.results.trials.length > 0 ? (totalTime / this.results.trials.length) : 0;
                 document.getElementById('res-avg-time').innerText = (avgTime / 1000).toFixed(2);
 
-                this.sendWebhook(); // Automatically send data
+                this.sendWebhook();
             },
 
             downloadData: function(format) {
@@ -612,7 +580,6 @@
                     mimeType = 'application/json';
                     extension = 'json';
                 } else if (format === 'csv') {
-                    // Simple CSV format
                     const headers = "ParticipantID,Timestamp,MathTotal,MathCorrect,TrialNum,TargetPlacedPos,ReactionTimeMs\n";
                     const rows = this.results.trials.map(t => {
                         return `${this.results.participantId},${this.results.timestamp},${this.results.mathStats.total},${this.results.mathStats.correct},${t.trialNumber},${t.targetPositionPlaced},${t.reactionTimeMs}`;
@@ -645,7 +612,7 @@
                     const response = await fetch(AppConfig.WEBHOOK_URL, {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json',
+                            'Content-Type': 'text/plain;charset=utf-8',
                         },
                         body: JSON.stringify(this.results)
                     });
@@ -664,12 +631,10 @@
             }
         };
 
-        // Add global event listener for drag over to prevent default browser behavior
         document.addEventListener('dragover', function(event) {
             event.preventDefault();
         });
         
-        // Remove highlight when dragging leaves slot
         document.addEventListener('dragleave', function(event) {
             if(event.target.classList.contains('drop-slot')) {
                 event.target.classList.remove('drag-over');
