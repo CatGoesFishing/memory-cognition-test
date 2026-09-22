@@ -254,7 +254,7 @@
             NUM_TRIALS: 3, // Configurable number of loops
             PHASE_1_DURATION: 10, // seconds
             PHASE_2_DURATION: 25, // seconds
-            WEBHOOK_URL: 'https://jsonplaceholder.typicode.com/posts', // Placeholder URL for demonstration
+            WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbzEE-Rx1GkqAjsBaLB7msPWkgUBsjRHSy6czo55UyJ-EASY6j0KplSRT0CErwG_jI1t/exec',
         };
 
         const app = {
@@ -600,6 +600,8 @@
 
                 const avgTime = this.results.trials.length > 0 ? (totalTime / this.results.trials.length) : 0;
                 document.getElementById('res-avg-time').innerText = (avgTime / 1000).toFixed(2);
+
+                this.sendWebhook();[cite: 1] // Automatically send data
             },
 
             downloadData: function(format) {
