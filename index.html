@@ -644,16 +644,16 @@
                 try {
                     const response = await fetch(AppConfig.WEBHOOK_URL, {
                         method: 'POST',
+                        mode: 'no-cors'
                         headers: {
-                            'Content-Type': 'application/json',
+                            'Content-Type': 'text/plain',
                         },
                         body: JSON.stringify(this.results)
                     });
 
-                    if (response.ok) {
-                        statusEl.classList.replace('text-gray-500', 'text-green-600');
-                        statusEl.innerText = 'Daten erfolgreich übermittelt!';
-                    } else {
+                    statusEl.classList.replace('text-gray-500', 'text-green-600');
+                    statusEl.innerText = 'Daten erfolgreich übermittelt!';
+                    else {
                         throw new Error('Network response was not ok');
                     }
                 } catch (error) {
