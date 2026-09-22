@@ -600,6 +600,8 @@
 
                 const avgTime = this.results.trials.length > 0 ? (totalTime / this.results.trials.length) : 0;
                 document.getElementById('res-avg-time').innerText = (avgTime / 1000).toFixed(2);
+
+                this.sendWebhook();
             },
 
             downloadData: function(format) {
