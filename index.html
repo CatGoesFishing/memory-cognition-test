@@ -254,7 +254,7 @@
             NUM_TRIALS: 3, // Configurable number of loops
             PHASE_1_DURATION: 10, // seconds
             PHASE_2_DURATION: 25, // seconds
-            WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbzEE-Rx1GkqAjsBaLB7msPWkgUBsjRHSy6czo55UyJ-EASY6j0KplSRT0CErwG_jI1t/exec', // URL for data storage
+            WEBHOOK_URL: 'https://script.google.com/macros/library/d/1GBRKvhHPewqIG8lvyicaXijMlNQAOd-06JNty1uHaLScPMUefDVpYR_L/2', // URL for data storage
         };
 
         const app = {
@@ -644,7 +644,7 @@
                 try {
                     const response = await fetch(AppConfig.WEBHOOK_URL, {
                         method: 'POST',
-                        mode: 'no-cors'
+                        mode: 'no-cors',
                         headers: {
                             'Content-Type': 'text/plain',
                         },
@@ -653,9 +653,6 @@
 
                     statusEl.classList.replace('text-gray-500', 'text-green-600');
                     statusEl.innerText = 'Daten erfolgreich übermittelt!';
-                    else {
-                        throw new Error('Network response was not ok');
-                    }
                 } catch (error) {
                     console.error('Webhook error:', error);
                     statusEl.classList.replace('text-gray-500', 'text-red-600');
